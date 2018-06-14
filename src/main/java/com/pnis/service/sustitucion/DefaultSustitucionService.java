@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.pnis.crud.SustitucionRepository;
 import com.pnis.crud.TerrenoRepository;
 import com.pnis.crud.TipoSustitucionRepository;
@@ -16,6 +18,7 @@ import com.pnis.domain.TipoSustitucion;
 import com.pnis.domain.Usuario;
 import com.pnis.service.dto.SustitucionDTO;
 
+@Service
 public class DefaultSustitucionService implements SustitucionService{
 	
 	@Inject
@@ -73,12 +76,23 @@ public class DefaultSustitucionService implements SustitucionService{
 
 	@Override
 	public Sustitucion updateSustitucion(SustitucionDTO sustitucion) {
-		return null;
+		Sustitucion updateSustitucion = new Sustitucion();
+		if( sustitucion.getEstado()!=null ) {
+			updateSustitucion.setEstado(sustitucion.getEstado());
+		}
+		if( sustitucion.getFechaInicio()!=null ) {
+			updateSustitucion.setFechaInicio(sustitucion.getFechaInicio());
+		}
+		if( sustitucion.getFechaFin()!=null ) {
+			updateSustitucion.setFechaFin(sustitucion.getFechaFin());
+		}
+		return sustitucionRepository.save(updateSustitucion);
 	}
 
 	@Override
 	public Boolean deleteSustitucion(int id) {
-		return null;
+		sustitucionRepository.deleteById(id);
+		return Boolean.TRUE;
 	}
 	
 
