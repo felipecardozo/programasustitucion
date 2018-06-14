@@ -2,8 +2,12 @@ package com.pnis.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +20,12 @@ public class Sustitucion {
 	@Setter
 	private int id;
 
+	@Column(name="fecha_inicio")
 	@Getter
 	@Setter
 	private Date fechaInicio;
 
+	@Column(name="fecha_fin")
 	@Getter
 	@Setter
 	private Date fechaFin;
@@ -28,17 +34,23 @@ public class Sustitucion {
 	@Setter
 	private String estado;
 
+	@OneToOne
+	@JoinColumn(name="id_delegado")
 	@Getter
 	@Setter
-	private int idDelegado;
+	private Usuario deledado;
 
+	@OneToOne
+	@JoinColumn(name="id_terreno")
 	@Getter
 	@Setter
-	private int idTerreno;
+	private Terreno terreno;
 
+	@OneToOne
+	@JoinColumn(name="id_tiposustitucion")
 	@Getter
 	@Setter
-	private int tipoSustitucion;
+	private TipoSustitucion tipoSustitucion;
 	
 
 }
