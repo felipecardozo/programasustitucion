@@ -25,7 +25,7 @@ public class RestPropietario {
 	@Inject
 	private PropietarioRepository propietarioRepository;
 	
-	@GetMapping(value="/propietario/all")
+	@GetMapping(value="/propietarios")
 	public @ResponseBody List<Propietario> getAllPropietarios() {
 		List<Propietario> propietarios = new ArrayList<>();
 		propietarioRepository.findAll().forEach(propietarios::add);
