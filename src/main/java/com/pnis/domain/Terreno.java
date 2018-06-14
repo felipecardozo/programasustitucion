@@ -1,8 +1,9 @@
 package com.pnis.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,14 +32,16 @@ public class Terreno {
 	@Setter
 	private String nombre;
 
-	@Column(name="id_propietario")
+	@OneToOne
+	@JoinColumn(name="id_propietario")
 	@Getter
 	@Setter
-	private int idPropietario;
+	private Propietario propietario;
 
-	@Column(name="id_municipio")
+	@OneToOne
+	@JoinColumn(name="id_municipio")
 	@Getter
 	@Setter
-	private int idMunicipio;
+	private Municipio municipio;
 
 }

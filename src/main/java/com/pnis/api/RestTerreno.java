@@ -29,16 +29,16 @@ public class RestTerreno {
 	@Inject
 	private PropietarioRepository propietarioRepository;
 	
-	@GetMapping(value="/terreno/all/{identificacion}")
+	@GetMapping(value="/terrenos/{identificacion}")
 	public @ResponseBody List<Terreno> getTerrenos(@PathVariable String identificacion) {
 		Propietario propietario = propietarioRepository.findByNumeroIdentificacion(identificacion);
 		if( propietario != null ) {
-			return terrenoRepository.findAllByIdPropietario(propietario.getId());
+			return terrenoRepository.findAllByPropietario(propietario);
 		}
 		return new ArrayList<>();
 	}
 	
-	@GetMapping(value="/terreno/all")
+	@GetMapping(value="/terrenos")
 	public @ResponseBody List<Terreno> getTerrenos() {
 		List<Terreno> terrenos = new ArrayList<>();
 		terrenoRepository.findAll().forEach(terrenos::add);
@@ -52,7 +52,7 @@ public class RestTerreno {
 	
 	@PutMapping(value="/terreno")
 	public @ResponseBody Terreno updateTerreno(@RequestBody Terreno terreno) {
-		Optional<Propietario> propietario = propietarioRepository.findById(terreno.getIdPropietario());
+		Optional<Propietario> propietario = propietarioRepository.findById(terreno.getPropietario().getId());
 		if( propietario.isPresent() ) {
 			Optional<Terreno> exist = terrenoRepository.findById(terreno.getId());
 			if( exist.isPresent() ) {
@@ -69,11 +69,11 @@ public class RestTerreno {
 				if( terreno.getTamanio()!=0 ) {
 					found.setTamanio(terreno.getTamanio());
 				}
-				if( terreno.getIdMunicipio()!=0 ) {
-					found.setIdMunicipio(terreno.getIdMunicipio());
+				if( terreno.getMunicipio()!=null ) {
+					found.setMunicipio(terreno.getMunicipio());
 				}
-				if( terreno.getIdPropietario()!=0 ) {
-					found.setIdPropietario(terreno.getIdPropietario());
+				if( terreno.getPropietario()!=null ) {
+					found.setPropietario(terreno.getPropietario());
 				}
 				return terrenoRepository.save(found);
 			}
