@@ -33,10 +33,15 @@ jQuery(function ($) {
 			innerHtml.push("<td>");
 			innerHtml.push(terreno.municipio.departamento.nombre);
 			innerHtml.push("</td>");
+			innerHtml.push("<td>");
+			innerHtml.push("<a href='/editterrain.html?id="+terreno.id+"'>editar</a>");
+			innerHtml.push("</td>");
+			innerHtml.push("<td>");
+			innerHtml.push("<a href='/terrains.html'>eliminar</a>");
+			innerHtml.push("</td>");
+			innerHtml.push("</tr>");
 		}
 		tabla.html(innerHtml.join(""));
 	});
-
-    
 	
 });
