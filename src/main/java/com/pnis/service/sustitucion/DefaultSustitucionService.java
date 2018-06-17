@@ -107,6 +107,7 @@ public class DefaultSustitucionService implements SustitucionService{
 		Optional<Sustitucion> found = sustitucionRepository.findById( request.getIdSustitucion());
 		if( found.isPresent() ) {
 			Sustitucion sustitucion = found.get();
+			
 			TipoSustitucion tipoSusObj = tipoSustitucionRepository.findById(request.getIdTipoSustitucion()).get();
 			sustitucion.setTipoSustitucion(tipoSusObj);
 			

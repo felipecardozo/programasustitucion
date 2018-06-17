@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum SustitucionEstado {
 	
-	FINALIZADO(""), EN_PROGRESO("En progreso");
+	FINALIZADO("Finalizado"), EN_PROGRESO("En progreso");
 	
 	@Getter
 	private String estado;
