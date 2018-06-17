@@ -46,7 +46,7 @@ public class RestTerreno {
 	}
 	
 	@PostMapping(value="/terreno")
-	public @ResponseBody Terreno addTerreno(@RequestBody Terreno terreno) {
+	public @ResponseBody Terreno createTerreno(@RequestBody Terreno terreno) {
 		return terrenoRepository.save(terreno);
 	}
 	

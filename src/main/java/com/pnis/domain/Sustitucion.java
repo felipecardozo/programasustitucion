@@ -32,6 +32,10 @@ public class Sustitucion {
 	@Getter
 	@Setter
 	private String estado;
+	
+	@Getter
+	@Setter
+	private String archivo;
 
 	@OneToOne
 	@JoinColumn(name="id_delegado")

@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
-public class SustitucionDTO {
+public class SustitucionRequestDTO {
 	
 	@Getter
 	@Setter
