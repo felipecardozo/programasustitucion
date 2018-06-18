@@ -16,7 +16,7 @@ import com.pnis.dto.FileDTO;
 @RestController
 public class RestFileManager {
 
-	
+	//https://spring.io/guides/gs/uploading-files/
 	@PostMapping(value="/upload", consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
 	public @ResponseBody FileDTO uploadFile( @RequestParam MultipartFile file ) throws IOException {
 		File fileConverter = new File( "C:\\AEM\\workspace\\programa-sustitucion\\uploads\\" + file.getOriginalFilename() );
