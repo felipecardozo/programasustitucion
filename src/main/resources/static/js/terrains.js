@@ -1,5 +1,4 @@
 jQuery(function ($) {
-
 	var tabla = $("#tabla_terrenos");
 
 	$.ajax({
@@ -9,8 +8,10 @@ jQuery(function ($) {
         contentType: "application/json"
 	}).done(function (data){
 		var innerHtml = [];
-		for( var i=0; i<data.length; i++ ){
+
+		for(var i=0; i<data.length; i++){
 			var terreno = data[i];
+
 			innerHtml.push("<tr>");
 			innerHtml.push("<td>");
 			innerHtml.push(terreno.nombre);
@@ -34,14 +35,30 @@ jQuery(function ($) {
 			innerHtml.push(terreno.municipio.departamento.nombre);
 			innerHtml.push("</td>");
 			innerHtml.push("<td>");
-			innerHtml.push("<a href='/editterrain.html?id="+terreno.id+"'>editar</a>");
+			innerHtml.push("<a class='btn btn-info' href='/editterrain.html?id=" + terreno.id + "'>Editar</a>");
 			innerHtml.push("</td>");
 			innerHtml.push("<td>");
-			innerHtml.push("<a href='/terrains.html'>eliminar</a>");
+			innerHtml.push("<input type='button' class='btn btn-warning' onclick='eliminar("+terreno.id+")' id='deleteTerrain' value ='Eliminar'>");
 			innerHtml.push("</td>");
 			innerHtml.push("</tr>");
 		}
 		tabla.html(innerHtml.join(""));
-	});
-	
+	});	
 });
+
+function eliminar(id){
+	if(confirm("¿Está usted seguro de que desear eliminar este terreno?")){
+		$.ajax({
+            url: "http://localhost:8080/terreno/" + id,
+            method: 'delete',
+            dataType: "json",
+            contentType: "application/json"
+		}).done(function (data){
+			alert("Terreno eliminado correctamente!");
+			window.location.href = location;
+		});
+	}
+	else{
+		return false;
+	}
+}

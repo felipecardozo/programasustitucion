@@ -9,6 +9,7 @@ jQuery(function ($) {
         contentType: "application/json"
 	}).done(function (data){
 		var innerHtml = [];
+
 		for( var i=0; i<data.length; i++ ){
 			var propietario = data[i];
 			
@@ -25,7 +26,4 @@ jQuery(function ($) {
 		}
 		tabla.html(innerHtml.join(""));
 	});
-
-    
-	
 });
