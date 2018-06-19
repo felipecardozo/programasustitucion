@@ -2,6 +2,7 @@ package com.pnis.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 
@@ -67,6 +68,11 @@ public class RestPropietario {
 		if( exist != null ) {
 			propietarioRepository.delete(exist);
 			return Boolean.TRUE;
+		}else {
+			Optional<Propietario> propById = propietarioRepository.findById(Integer.parseInt(identificacion));
+			if (propById.isPresent()) {
+				return Boolean.TRUE;
+			}
 		}
 		return Boolean.FALSE;
 	}
