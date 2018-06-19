@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pnis.crud.MunicipioRepository;
 import com.pnis.crud.PropietarioRepository;
 import com.pnis.crud.TerrenoRepository;
+import com.pnis.crud.UsuarioRepository;
+import com.pnis.domain.Municipio;
 import com.pnis.domain.Propietario;
 import com.pnis.domain.Terreno;
+import com.pnis.domain.Usuario;
 
 @RestController
 public class RestTerreno {
@@ -28,6 +32,9 @@ public class RestTerreno {
 	
 	@Inject
 	private PropietarioRepository propietarioRepository;
+	
+	@Inject 
+	private MunicipioRepository municipioRepository;
 	
 	@GetMapping(value="/terrenos/{identificacion}")
 	public @ResponseBody List<Terreno> getTerrenos(@PathVariable String identificacion) {
@@ -75,10 +82,11 @@ public class RestTerreno {
 					found.setTamanio(terreno.getTamanio());
 				}
 				if( terreno.getMunicipio()!=null ) {
-					found.setMunicipio(terreno.getMunicipio());
+					Municipio municipio = municipioRepository.findById(terreno.getMunicipio().getId()).get();
+					found.setMunicipio(municipio);
 				}
 				if( terreno.getPropietario()!=null ) {
-					found.setPropietario(terreno.getPropietario());
+					found.setPropietario(propietario.get());
 				}
 				return terrenoRepository.save(found);
 			}
