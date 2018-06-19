@@ -50,7 +50,7 @@ function eliminar(id){
 	if(confirm("¿Está usted seguro de que desear eliminar este terreno?")){
 		$.ajax({
             url: "http://localhost:8080/terreno/" + id,
-            method: 'delete',
+            method: 'DELETE',
             dataType: "json",
             contentType: "application/json"
 		}).done(function (data){
