@@ -38,6 +38,11 @@ public class RestTerreno {
 		return new ArrayList<>();
 	}
 	
+	@GetMapping("/terreno/{id}")
+	public @ResponseBody Terreno getTerrenoById(@PathVariable Integer id) {
+		return terrenoRepository.findById(id).get();
+	}
+	
 	@GetMapping(value="/terrenos")
 	public @ResponseBody List<Terreno> getTerrenos() {
 		List<Terreno> terrenos = new ArrayList<>();
