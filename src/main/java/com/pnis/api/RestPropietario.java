@@ -71,6 +71,7 @@ public class RestPropietario {
 		}else {
 			Optional<Propietario> propById = propietarioRepository.findById(Integer.parseInt(identificacion));
 			if (propById.isPresent()) {
+				propietarioRepository.delete(propById.get());
 				return Boolean.TRUE;
 			}
 		}
