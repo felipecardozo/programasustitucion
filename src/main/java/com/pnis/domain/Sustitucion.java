@@ -32,10 +32,6 @@ public class Sustitucion {
 	@Getter
 	@Setter
 	private String estado;
-	
-	@Getter
-	@Setter
-	private String archivo;
 
 	@OneToOne
 	@JoinColumn(name="id_delegado")
@@ -54,6 +50,12 @@ public class Sustitucion {
 	@Getter
 	@Setter
 	private TipoSustitucion tipoSustitucion;
+	
+	@OneToOne
+	@JoinColumn(name = "id_acuerdo")
+	@Getter
+	@Setter
+	private Acuerdo acuerdo;
 	
 
 }

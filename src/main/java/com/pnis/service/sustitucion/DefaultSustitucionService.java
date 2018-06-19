@@ -10,7 +10,6 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.pnis.crud.SustitucionRepository;
 import com.pnis.crud.TerrenoRepository;
@@ -113,8 +112,7 @@ public class DefaultSustitucionService implements SustitucionService{
 		return new Sustitucion();
 	}
 
-	@Override
-	public MensajeDTO sustituir(SustituirRequestDTO request) throws IOException {
+	private MensajeDTO sustituir(SustituirRequestDTO request) throws IOException {
 		Optional<Sustitucion> found = sustitucionRepository.findById( request.getIdSustitucion());
 		if( found.isPresent() ) {
 			Sustitucion sustitucion = found.get();
@@ -129,8 +127,8 @@ public class DefaultSustitucionService implements SustitucionService{
 			fileOutput.write(request.getFile().getBytes());
 			fileOutput.close();
 			
-			sustitucion.setArchivo(archivo);
-			sustitucion.setEstado(SustitucionEstado.FINALIZADO.getEstado());
+//			sustitucion.setArchivo(archivo);
+			sustitucion.setEstado(request.getEstado());
 			
 			Optional<Usuario> usuarioOptional = usuarioRepository.findById(request.getIdDelegado());
 			if( usuarioOptional.isPresent() ) {
