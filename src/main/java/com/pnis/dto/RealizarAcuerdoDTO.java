@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Getter;
 import lombok.Setter;
 
-public class SustituirRequestDTO {
+public class RealizarAcuerdoDTO {
 	
 	@Getter
 	@Setter
@@ -25,10 +25,10 @@ public class SustituirRequestDTO {
 	
 	@Getter
 	@Setter
-	private String aprobado;
+	private MultipartFile file;
 	
 	@Getter
 	@Setter
-	private MultipartFile file;
+	private String aprobado;
 
 }

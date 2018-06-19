@@ -54,18 +54,19 @@ public class RestSustitucion {
 		return sustitucionService.deleteSustitucion(id);
 	}
 	
-	@PostMapping(value="/sustituir/{idSustitucion}/{idTipo}/{idDelegado}", consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
-	public MensajeDTO sustituir(@PathVariable Integer idSustitucion, @PathVariable Integer idTipo, @PathVariable Integer idDelegado, @RequestParam MultipartFile file) {
+	/*@PostMapping(value="/sustituir/{idSustitucion}/{idTipo}/{idDelegado}/{estado}/{aprobado}", consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
+	public MensajeDTO sustituir(@PathVariable Integer idSustitucion, @PathVariable Integer idTipo, @PathVariable Integer idDelegado, @PathVariable String estado, @PathVariable String aprobado, @RequestParam MultipartFile file) {
 		SustituirRequestDTO request = new SustituirRequestDTO();
 		request.setIdSustitucion(idSustitucion);
 		request.setIdTipoSustitucion(idTipo);
 		request.setIdDelegado(idDelegado);
 		request.setFile(file);
+		request.setEstado(estado);
 		try {
 			return sustitucionService.sustituir(request);
 		} catch (IOException e) {
 			return new MensajeDTO("Error haciendo la sustitucion " + idSustitucion + ": " + e.getMessage());
 		}
-	}
+	}*/
 
 }

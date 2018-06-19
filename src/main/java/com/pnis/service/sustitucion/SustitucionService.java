@@ -22,6 +22,6 @@ public interface SustitucionService {
 	
 	public Boolean deleteSustitucion(int id);
 	
-	public MensajeDTO sustituir(SustituirRequestDTO request) throws IOException;
+	//public MensajeDTO sustituir(SustituirRequestDTO request) throws IOException;
 
 }
