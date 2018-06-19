@@ -16,6 +16,8 @@ public interface SustitucionService {
 	
 	public Sustitucion createSustitucion(SustitucionRequestDTO sustitucion);
 	
+	public Sustitucion getSustitucionById(Integer id);
+	
 	public Sustitucion updateSustitucion(SustitucionRequestDTO sustitucion);
 	
 	public Boolean deleteSustitucion(int id);

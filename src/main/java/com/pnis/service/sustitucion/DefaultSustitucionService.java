@@ -101,6 +101,17 @@ public class DefaultSustitucionService implements SustitucionService{
 		Optional<Sustitucion> found = sustitucionRepository.findById(id);
 		return !found.isPresent();
 	}
+	
+	@Override
+	public Sustitucion getSustitucionById(Integer id) {
+		if( id != null ) {
+			Optional<Sustitucion> found = sustitucionRepository.findById(id);
+			if( found.isPresent() ) {
+				return found.get();
+			}
+		}
+		return new Sustitucion();
+	}
 
 	@Override
 	public MensajeDTO sustituir(SustituirRequestDTO request) throws IOException {

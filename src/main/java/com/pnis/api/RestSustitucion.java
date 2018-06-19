@@ -34,6 +34,11 @@ public class RestSustitucion {
 		return sustitucionService.getAllSustituciones();
 	}
 	
+	@GetMapping("/sustitucion/{id}")
+	public @ResponseBody Sustitucion getSustitucionById(@PathVariable Integer id) {
+		return sustitucionService.getSustitucionById(id);
+	}
+	
 	@PostMapping("/sustitucion")
 	public Sustitucion createSustitucion(@RequestBody SustitucionRequestDTO sustitucion) {
 		return sustitucionService.createSustitucion(sustitucion);
