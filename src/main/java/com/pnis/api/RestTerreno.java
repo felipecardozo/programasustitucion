@@ -18,11 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pnis.crud.MunicipioRepository;
 import com.pnis.crud.PropietarioRepository;
 import com.pnis.crud.TerrenoRepository;
-import com.pnis.crud.UsuarioRepository;
 import com.pnis.domain.Municipio;
 import com.pnis.domain.Propietario;
 import com.pnis.domain.Terreno;
-import com.pnis.domain.Usuario;
 
 @RestController
 public class RestTerreno {

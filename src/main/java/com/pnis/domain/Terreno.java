@@ -1,6 +1,8 @@
 package com.pnis.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -12,6 +14,7 @@ import lombok.Setter;
 public class Terreno {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
 	@Setter
 	private Integer id;
