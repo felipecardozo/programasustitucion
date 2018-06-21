@@ -1,6 +1,7 @@
 package com.pnis.service.acuerdo;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -15,6 +16,10 @@ import com.pnis.crud.UsuarioRepository;
 import com.pnis.domain.Sustitucion;
 import com.pnis.dto.MensajeDTO;
 import com.pnis.dto.RealizarAcuerdoDTO;
+import com.pnis.observer.DelegadoObserver;
+import com.pnis.observer.NotificarDelegados;
+import com.pnis.observer.Observer;
+import com.pnis.observer.Subject;
 
 @Service
 public class AcuerdoVoluntarioService implements AcuerdoService {
@@ -41,13 +46,21 @@ public class AcuerdoVoluntarioService implements AcuerdoService {
 			   .buildDelegado(request.getIdDelegado())
 			   .buildEstado(request.getEstado());
 		Sustitucion sustitucion = builder.buildAcuerdo(request.getAprobado());
-		
+		notify(sustitucion);
 		if( sustitucion != null ) {
-			
 			return new MensajeDTO("La sustitucion ha sido realizada satisfactoriamente");
 		}
 		
 		return new MensajeDTO("La sustitucion no se ha completado");
+	}
+	
+	private void notify(Sustitucion sustitucion) {
+		if( sustitucion.getEstado().equalsIgnoreCase("Finalizado") ) {
+			List<String> emails = usuarioRepository.findAllEmailByTipoUsuario(TipoUsuario.SUPER_DELEGADO.getId());
+			Subject subject = new NotificarDelegados(emails, "la sustitucion con id " + sustitucion.getId() + " se ha finalizado !");
+			Observer observer = new DelegadoObserver(subject);
+			subject.registerObserver(observer);
+		}
 	}
 
 }
