@@ -13,7 +13,7 @@ public class Usuario {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 	
 	@Getter
 	@Setter
@@ -34,6 +34,6 @@ public class Usuario {
 	@Getter
 	@Setter
 	@Column(name="id_tipousuario")
-	private int idTipoUsuario;
+	private Integer idTipoUsuario;
 
 }

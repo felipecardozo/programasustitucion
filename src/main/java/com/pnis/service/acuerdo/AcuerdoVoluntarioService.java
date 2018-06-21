@@ -39,7 +39,7 @@ public class AcuerdoVoluntarioService implements AcuerdoService {
 	
 	@Override
 	public MensajeDTO realizar(RealizarAcuerdoDTO request) throws IOException {
-		Optional<Sustitucion> found = sustitucionRepository.findById( request.getIdSustitucion());
+		Optional<Sustitucion> found = sustitucionRepository.findById( request.getIdSustitucion() );
 		if( found.isPresent() ) {
 			Sustitucion sustitucion = found.get();
 			

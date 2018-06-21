@@ -104,7 +104,9 @@ public class DefaultSustitucionService implements SustitucionService{
 	@Override
 	public Sustitucion getSustitucionById(Integer id) {
 		if( id != null ) {
+			long count = sustitucionRepository.count();
 			Optional<Sustitucion> found = sustitucionRepository.findById(id);
+			
 			if( found.isPresent() ) {
 				return found.get();
 			}

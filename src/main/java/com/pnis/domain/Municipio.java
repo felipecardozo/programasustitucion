@@ -14,7 +14,7 @@ public class Municipio {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 
 	@Getter
 	@Setter

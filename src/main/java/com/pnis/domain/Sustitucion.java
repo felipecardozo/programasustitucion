@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -15,9 +17,10 @@ import lombok.Setter;
 public class Sustitucion {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 
 	@Column(name="fecha_inicio")
 	@Getter

@@ -13,7 +13,7 @@ public class Departamento {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 	
 	
 	@Getter

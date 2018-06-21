@@ -12,7 +12,7 @@ public class TipoSustitucion {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 
 	@Getter
 	@Setter

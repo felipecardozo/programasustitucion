@@ -12,7 +12,7 @@ public class Propietario {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 
 	@Getter
 	@Setter

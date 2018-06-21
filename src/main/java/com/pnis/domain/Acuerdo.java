@@ -15,7 +15,7 @@ public class Acuerdo {
 	@Id
 	@Getter
 	@Setter
-	private int id;
+	private Integer id;
 	
 	@Getter
 	@Setter
