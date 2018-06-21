@@ -43,6 +43,7 @@ public class AcuerdoVoluntarioService implements AcuerdoService {
 		Sustitucion sustitucion = builder.buildAcuerdo(request.getAprobado());
 		
 		if( sustitucion != null ) {
+			
 			return new MensajeDTO("La sustitucion ha sido realizada satisfactoriamente");
 		}
 		
