@@ -21,14 +21,14 @@ public class SustitucionRequestDTO {
 
 	@Getter
 	@Setter
-	private int idTerreno;
+	private Integer idTerreno;
 
 	@Getter
 	@Setter
-	private int idDelegado;
+	private Integer idDelegado;
 
 	@Getter
 	@Setter
-	private int idTipoSustitucion;
+	private Integer idTipoSustitucion;
 
 }

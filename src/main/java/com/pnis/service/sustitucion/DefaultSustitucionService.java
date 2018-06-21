@@ -14,6 +14,9 @@ import com.pnis.crud.TerrenoRepository;
 import com.pnis.crud.TipoSustitucionRepository;
 import com.pnis.crud.UsuarioRepository;
 import com.pnis.domain.Sustitucion;
+import com.pnis.domain.Terreno;
+import com.pnis.domain.TipoSustitucion;
+import com.pnis.domain.Usuario;
 import com.pnis.service.dto.SustitucionRequestDTO;
 
 @Service
@@ -52,8 +55,12 @@ public class DefaultSustitucionService implements SustitucionService{
 	}
 
 	@Override
-	public Sustitucion updateSustitucion(SustitucionRequestDTO sustitucion) {
+	public Sustitucion updateSustitucion(final Integer idSustitucion, final SustitucionRequestDTO sustitucion) {
 		Sustitucion updateSustitucion = new Sustitucion();
+		Optional<Sustitucion> sustitucionTemp =  sustitucionRepository.findById(idSustitucion);
+		if( sustitucionTemp.isPresent() ) {
+			updateSustitucion = sustitucionTemp.get();
+		}
 		if( sustitucion.getEstado()!=null ) {
 			updateSustitucion.setEstado(sustitucion.getEstado());
 		}
@@ -62,6 +69,24 @@ public class DefaultSustitucionService implements SustitucionService{
 		}
 		if( sustitucion.getFechaFin()!=null ) {
 			updateSustitucion.setFechaFin(sustitucion.getFechaFin());
+		}
+		if( sustitucion.getIdDelegado()!=null ) {
+			Optional<Usuario> delegado = usuarioRepository.findById(sustitucion.getIdDelegado());
+			if( delegado.isPresent() ) {
+				updateSustitucion.setDeledado(delegado.get());
+			}
+		}
+		if( sustitucion.getIdTerreno()!=null ) {
+			Optional<Terreno> terreno = terrenoRepository.findById(sustitucion.getIdTerreno());
+			if( terreno.isPresent() ) {
+				updateSustitucion.setTerreno(terreno.get());
+			}
+		}
+		if( sustitucion.getIdTipoSustitucion()!=null ) {
+			Optional<TipoSustitucion> tipoSustitucion = tipoSustitucionRepository.findById(sustitucion.getIdTipoSustitucion());
+			if( tipoSustitucion.isPresent() ) {
+				updateSustitucion.setTipoSustitucion(tipoSustitucion.get());
+			}
 		}
 		return sustitucionRepository.save(updateSustitucion);
 	}

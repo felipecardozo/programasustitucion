@@ -32,7 +32,7 @@ public class NotificarDelegados implements Subject {
 
 	@Override
 	public void unRegisterObserver(Observer observer) {
-		// TODO Auto-generated method stub
+		delegados.remove(observer);
 	}
 
 	@Override
